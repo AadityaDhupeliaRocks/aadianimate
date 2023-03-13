@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Colourful Math Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body background="Screenshot 2023-03-13 at 7.54.32 PM.png" width="5000"> 
+  <div class="game-container">
+    <div class="header">
+      <div class="time-left">60</div>
+      <div class="score">0</div>
+    </div>
+    <div class="problem-container">
+      <div class="problem"></div>
+      <input type="text" class="answer-input" placeholder="Enter your answer">
+      <button class="submit-button" onclick="submitAnswer">Submit</button>
+    </div>
+    <button class="start-game-button">Start Game</button>
+    <div class="game-over">
+      <h2></h2>
+      <button class="play-again-button">Play Again</button>
+    </div>
+  </div>
+
+  <label> 10 points = 1 chocolate
+	<br> 15 points = 2 chocolates
+	<br> 20 points and above = 5 chocolates <br>
+  </label>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+body {
+    background-color: #f9c59c;
+    font-family: Arial, sans-serif;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6e4c41;
+    color: #fff;
+    padding: 10px;
+    width: 90%;
+    border-radius: 10px;
+  }
+  
+  .time-left, .score {
+    font-size: 40px;
+  }
+  
+  .problem-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+  
+  .problem {
+    font-size: 60px;
+    background-color: #f2d7d5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .answer-input {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 50%;
+  }
+  
+  .submit-button {
+    background-color: #6e4c41;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .start-game-button, .play-again-button {
+    background-color: #6e4c41;
+    color: #fff;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .start-game-button:hover, .play-again-button:hover {
+    background-color: #f2d7d5;
+    color: #6e4c41;
+  }
+  
+  .game-over {
+    display: none;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .game-over h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  
