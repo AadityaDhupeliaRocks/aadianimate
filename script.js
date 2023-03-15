@@ -1,113 +1,93 @@
-let isPlaying = false;
-let problem;
-let answerInput;
-let timer;
+// Define variables
+let score = 0;
+let questionCounter = 0;
 
-// Set up DOM elements
-const timeLeftElement = document.querySelector('.time-left');
-const scoreElement = document.querySelector('.score');
-const problemElement = document.querySelector('.problem');
-const answerInputElement = document.querySelector('.answer-input');
-const submitButtonElement = document.querySelector('.submit-button');
-const startGameButtonElement = document.querySelector('.start-game-button');
-const gameOverElement = document.querySelector('.game-over');
-const playAgainButtonElement = document.querySelector('.play-again-button');
-
-// Set up event listeners
-submitButtonElement.addEventListener('click', submitAnswer);
-answerInputElement.addEventListener('keydown', function(event) {
-  if (event.keyCode === 13) {
-    submitAnswer();
-  }
-});
-startGameButtonElement.addEventListener('click', startGame);
-playAgainButtonElement.addEventListener('click', startGame);
-
-// Start the game
-function startGame() {
-  isPlaying = true;
-  timeLeft = 60;
-  score = 0;
-  problemElement.innerHTML = generateProblem();
-  answerInputElement.value = '';
-  updateScoreAndTime();
-  gameOverElement.style.display = 'none';
-  startTimer();
+// Start the game when the Start button is clicked
+const startButton = document.getElementById("Start");
+startButton.onclick = function() {
+  generateQuestion();
 }
 
-// Generate a random math problem
-function generateProblem() {
-  const operators = ['+', '-', '*', '/'];
-  const operator = operators[Math.floor(Math.random() * operators.length)];
-  let num1 = Math.floor(Math.random() * 100) + 1;
-  let num2 = Math.floor(Math.random() * 100) + 1;
-  let result;
-  switch (operator) {
-    case '+':
-      result = num1 + num2;
-      break;
-    case '-':
-      result = num1 - num2;
-      break;
-    case '*':
-      result = num1 * num2;
-      break;
-    case '/':
-      num1 = num1 * num2;
-      result = num1 / num2;
-      break;
-  }
-  return `${num1} ${operator} ${num2} = `;
-}
+function generateQuestion() {
+    // Increment the question counter
+    questionCounter++;
+  
+    // Generate a random number between 1 and 3 to determine the type of question
+    const questionType = Math.floor(Math.random() * 3) + 1;
+  
+    let questionText, answer;
+    
+    if (questionType === 1) { // To find radius when circumference is given
+      // Generate a random circumference value between 1 and 100
+      const circumference = Math.floor(Math.random() * 100) + 1;
+      // Calculate the radius based on the circumference
+      answer = circumference / (2 * Math.PI);
+      // Round the answer to two decimal places
+      answer = answer.toFixed(2);
+      // Set the question text
+      questionText = `Question ${questionCounter}: Given the circumference ${circumference}, what is the radius of the circle?`;
+    } else if (questionType === 2) { // To find radius when area is given
+      // Generate a random area value between 1 and 100
+      const area = Math.floor(Math.random() * 100) + 1;
+      // Calculate the radius based on the area
+      answer = Math.sqrt(area / Math.PI);
+      // Round the answer to two decimal places
+      answer = answer.toFixed(2);
+      // Set the question text
+      questionText = `Question ${questionCounter}: Given the area ${area}, what is the radius of the circle?`;
 
-// Submit the answer
-function submitAnswer() {
-  if (!isPlaying) return;
-  const answer = Number(answerInputElement.value);
-  const correctAnswer = eval(problemElement.innerHTML.slice(0, -2));
-  if (answer === correctAnswer) {
-    score++;
-    problemElement.innerHTML = generateProblem();
-    answerInputElement.value = '';
-    updateScoreAndTime();
-  } else {
-    if (score > 0) {
-      score--;
+    } 
+    else if (questionType === 3) { // To find radius when area is given
+        // Generate a random area value between 1 and 100
+        const square = Math.floor(Math.random() * 100) + 1;
+        // Calculate the radius based on the area
+        answer = square*square;
+        // Round the answer to two decimal places
+        answer = answer.toFixed(2);
+        // Set the question text
+        questionText = `Question ${questionCounter}: Given the number ${square}, what is the square of the number?`;
     }
-    answerInputElement.style.backgroundColor = 'red';
-    setTimeout(() => {
-      answerInputElement.style.backgroundColor = 'white';
-    }, 100);
-  }
-}
-
-// Update the score and time left
-function updateScoreAndTime() {
-  scoreElement.innerHTML = score;
-  timeLeftElement.innerHTML = timeLeft;
-}
-
-// Start the timer
-function startTimer() {
-  timer = setInterval(function() {
-    timeLeft--;
-    updateScoreAndTime();
-    if (timeLeft === 0) {
-      clearInterval(timer);
-      endGame();
+    else { // To find area when diameter is given
+      // Generate a random diameter value between 1 and 100
+      const diameter = Math.floor(Math.random() * 100) + 1;
+      // Calculate the area based on the diameter
+      answer = (Math.PI / 4) * (diameter ** 2);
+      // Round the answer to two decimal places
+      answer = answer.toFixed(2);
+      // Set the question text
+      questionText = `Question ${questionCounter}: Given the diameter ${diameter}, what is the area of the circle?`;
     }
-  }, 1000);
-}
-
-// Stop the timer
-function stopTimer() {
-  clearInterval(timer);
-}
-
-// End the game
-function endGame() {
-  stopTimer();
-  isPlaying = false;
-  gameOverElement.querySelector('h2').innerHTML = `Game Over! Score: ${score}`;
-  gameOverElement.style.display = 'block';
-}
+  
+    // Display the question
+    const questionLabel = document.getElementById("question");
+    questionLabel.textContent = questionText;
+  
+    // Clear the input field
+    const inputField = document.querySelector("input");
+    inputField.value = "";
+  
+    // Focus on the input field
+    inputField.focus();
+  
+    // Check the answer when the submit button is clicked
+    const submitButton = document.getElementById("submit");
+    submitButton.onclick = function() {
+      const userAnswer = inputField.value;
+  
+      // Check if the answer is correct
+      if (userAnswer === answer) {
+        score++;
+        alert("Correct!");
+      } else {
+        alert(`Incorrect. The correct answer is ${answer}.`);
+      }
+  
+      // Update the score label
+      const scoreLabel = document.getElementById("score");
+      scoreLabel.textContent = `Score: ${score}`;
+  
+      // Generate a new question
+      generateQuestion();
+    }
+  }
+  
