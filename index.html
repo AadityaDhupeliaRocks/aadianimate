@@ -1,33 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Colourful Math Game</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body background="Screenshot 2023-03-13 at 7.54.32 PM.png" width="5000"> 
-  <div class="game-container">
-    <div class="header">
-      <div class="time-left">60</div>
-      <div class="score">0</div>
-    </div>
-    <div class="problem-container">
-      <div class="problem"></div>
-      <input type="text" class="answer-input" placeholder="Enter your answer">
-      <button class="submit-button" onclick="submitAnswer">Submit</button>
-    </div>
-    <button class="start-game-button">Start Game</button>
-    <div class="game-over">
-      <h2></h2>
-      <button class="play-again-button">Play Again</button>
-    </div>
-  </div>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fraction to Percentage Game</title>
+<!--styles-->
+ <style>
+body{
+    background-image: linear-gradient(to right,red,orange,yellow);
+}
 
-  <label> 10 points = 1 chocolate
-	<br> 15 points = 2 chocolates
-	<br> 20 points and above = 5 chocolates <br>
-  </label>
-  
-  <script src="script.js"></script>
-</body>
+#submit{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 37px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 100px;
+  font-family:'Courier New', Courier, monospace;
+  display: block;
+  margin: auto;
+
+}
+
+input{
+    background-color: #af4cac; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 37px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 100px;
+  font-family:'Courier New', Courier, monospace;
+  display: block;
+  margin: auto;
+}
+
+#header{
+    background-image: linear-gradient(pink,rgb(19, 171, 241),rgb(190, 75, 190)); /* Green */
+  border: none;
+  color: white;
+  padding: 20px 37px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 50px;
+  text-align: center;
+  border-radius: 100px;
+  font-family:'Courier New', Courier, monospace;
+  display: block;
+  margin: auto;
+}
+
+#question{
+    background-image: linear-gradient(rgb(235, 91, 91),rgb(216, 164, 164)); /* Green */
+  border: none;
+  color: white;
+  padding: 20px 37px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 50px;
+  text-align: center;
+  border-radius: 100px;
+  font-family:'Courier New', Courier, monospace;
+  display: block;
+  margin: auto;
+  font-weight: bold;
+}
+
+#Start{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 37px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 100px;
+  font-family:'Courier New', Courier, monospace;
+  display: block;
+  margin: auto;
+
+}
+ </style>
+ 
+ <label id="header">CIRCLES</label>
+ <br><br>
+ <button id="Start" onclick="StartGame">Start the Game</button>
+ <br><br><br>
+ <label id="question"></label>
+ <hr>
+ <label id="score"></label>
+ <br>
+ <br>
+ <br>
+ <input type="Enteryouranswer" placeholder="Enter Your Answer">
+ <br>
+ <br>
+ <br>
+ <button id="submit" onclick="SubmitAnswer">Submit</button>
+ <br>
+ <br>
+ <br>
+
+ </head>
+    <script src="code.js"></script>
+  </body>
 </html>
+
+
+  
